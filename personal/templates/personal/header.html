@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %} <title>Welcome</title>{% endblock  %}
+
+    {% load staticfiles %}
+
+    <link rel= "stylesheet" href= "{% static 'personal/css/bootstrap.min.css' %}">
+    <script src = '{% static 'personal/jquery-3.3.1.min.js' %}'></script>
+    <script src="{% static 'personal/js/bootstrap.min.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'personal/css/style.css' %}">
+{% endblock style %}
+
+</head>
+
+
+<body class = "header_body">
+
+<nav id = "header_nav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'personal:HomeForm' %}">Website</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{% url 'personal:HomeForm' %}">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="{% url 'accounts:register' %}">Register</a>
+      <a class="nav-item nav-link" href={% url 'accounts:login' %}>Log in</a>
+      <a class="nav-item nav-link" href={% url 'accounts:profile' %}>Profile</a>
+      <a class="nav-item nav-link" href={% url 'Share:show_code' %}>Share</a>
+    </div>
+  </div>
+
+        <form class = "nax-item nav-link ml-auto" action="{% url "accounts:logout" %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Log out</button>
+        </form>
+
+</nav>
+
+
+                {%  block content %}
+
+                {% endblock content %}
+
+
+</body>
+</html>
+
+
+
+
