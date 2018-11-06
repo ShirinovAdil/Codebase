@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from accounts.forms import RegistrationForm, EditUserInfo
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login, logout, update_session_auth_hash
-from django.contrib import messages
+from Share.models import PersonalCode, Code
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 

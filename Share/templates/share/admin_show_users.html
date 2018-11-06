@@ -1,0 +1,13 @@
+{% extends 'personal/header.html' %}
+
+
+{% block content %}
+{% for user in users_list %}
+    <ul>
+        <li><strong style="color: red;">Username: </strong> {{ user.username }}</li>
+        <li><strong style="color: red;">Name: </strong> {{ user.first_name }}</li>
+        <li><strong style="color: red;">Surname:</strong> {{ user.last_name }}</li>
+        <li><strong style="color: red;">Last logged:</strong> {{ user.last_login }}</li>
+    </ul>
+{% endfor %}
+{% endblock content %}
