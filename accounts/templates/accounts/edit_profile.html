@@ -9,25 +9,25 @@
 {% block content %}
 
 
-<div class="container my-4">
-    <div class="row">
-        <div class="col-md-4"></div>
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-4"></div>
 
-            <div class = "col-md-4" style="font-size:1.2em;">
+            <div class="col-md-4" style="font-size:1.2em;">
 
-            <h1>Edit info</h1>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="btn btn-success" type="submit">Save changes</button>
-                <a href="{% url 'accounts:change_password'%}" class="btn btn-danger">Change password</a>
+                <h1>Edit info</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-success" type="submit">Save changes</button>
+                    <a href="{% url 'accounts:change_password' %}" class="btn btn-danger">Change password</a>
 
-            </form>
+                </form>
 
 
+            </div>
         </div>
     </div>
-</div>
 
 
 {% endblock %}

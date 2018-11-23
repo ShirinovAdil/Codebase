@@ -1,20 +1,21 @@
 {% extends "personal/header.html" %}
 
-    {% block title %} <title> Index page </title> {% endblock title %}
+{% block title %} <title> Index page </title> {% endblock title %}
 
 
-                        {%  block content %}
-                            {% load crispy_forms_tags %}
-                                {% load static %}
-                                <div class="container">
-                                    <div class=" alert alert-danger text-center my-5">
-                                        <h2 style="font-size:2.5em;color: black;">Due to unwanted content on the website,<br>now adding solutions is
-                                        available only for registered Users.
-                                        </h2>
-                                    </div>
-                                </div>
+    {% block content %}
+        <div class="container">
+        {% load crispy_forms_tags %}
+        {% load static %}
 
-                        {% endblock content %}
+        <div class=" alert alert-danger text-center my-5">
+            <h2 style="font-size:2.5em;color: black;">Due to unwanted content on the website,<br>now adding solutions is
+                available only for registered Users.
+            </h2>
+
+        </div>
+</div>
+    {% endblock content %}
 
 
 

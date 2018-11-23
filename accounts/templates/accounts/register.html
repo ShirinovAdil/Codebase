@@ -1,38 +1,36 @@
 {% extends "personal/header.html" %}
 
+
     {% block title %} <title> Form</title> {% endblock %}
-    <style>
-        .content{
-            text-align: center;
-        }
-
-         .content p{
-            font-size: 1.2em;
-        }
-
-        @media screen and (max-width:776px){
-             .logo{
-                justify-content: center!important;
-             }
-        }
-
-    </style>
 
                 {%  block content %}
-                    {% load crispy_forms_tags %}
 
 
                         <form  method="post" autocomplete="off" class="form-group">
                             {% csrf_token %}
-                            <div class="container my-4">
+
+
+                            <div class="container">
                                 <div class="row">
                                     <div class="col-md-4"></div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 my-4">
+                                        {% for error in form.non_field_errors %}
+                                            <div class="form-group has-errors text-danger small">
+                                                {{ error }}
+                                            </div>
+                                        {% endfor %}
+                                        <h3 style="font-family:arial;"><strong>Registration</strong></h3>
+                                        {% for field in form %}
+                                            <div class="form-group has-errors text-danger small">
+                                                {{ field.errors }}
+                                            </div>
+                                            <div class="form-group has-errors text-danger small">
+                                            </div>
+                                            {{ field }}
 
-                                            {{ form|crispy  }}
-                                            <button class="btn btn-primary" type="submit"> Submit</button>
-
-
+                                        {% endfor %}
+                                    <br>
+                                        <button class="btn btn-primary" type="submit"> Submit</button>
                                     </div>
                                 </div>
                             </div>

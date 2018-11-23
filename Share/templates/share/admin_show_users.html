@@ -2,12 +2,42 @@
 
 
 {% block content %}
-{% for user in users_list %}
-    <ul>
-        <li><strong style="color: red;">Username: </strong> {{ user.username }}</li>
-        <li><strong style="color: red;">Name: </strong> {{ user.first_name }}</li>
-        <li><strong style="color: red;">Surname:</strong> {{ user.last_name }}</li>
-        <li><strong style="color: red;">Last logged:</strong> {{ user.last_login }}</li>
-    </ul>
-{% endfor %}
+    <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>
+            Username
+        </th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Last logged</th>
+        <th width="200"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {%  for user in users_list %}
+    <tr>
+        <td>
+            {{ user.username }}
+        </td>
+    <td>
+        {{ user.first_name }}
+    </td>
+    <td>
+        {{ user.last_name }}
+    </td>
+    <td>
+        {{ user.last_login }}
+    </td>
+    <td>
+        <button class="btn btn-danger btn-sm">Delete</button>
+        <button class="btn btn-warning btn-sm">Edit</button>
+    </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
 {% endblock content %}
+
