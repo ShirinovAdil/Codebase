@@ -1,0 +1,84 @@
+{% extends "personal/header.html" %}
+{% load staticfiles %}
+{% load icons %}
+    {% block title %} <title> Share</title> {% endblock %}
+
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock style %}
+
+
+{%  block content %}
+    <div class="container">
+        <div class="row justify-content-md-center my-2">
+                    <div class="alert alert-info" role="alert">
+                        <p>You have visited this page {{ num_of_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+                    </div>
+        </div>
+
+
+            <div class="row">
+                <div class="col"></div>
+                    <div class="col-md-8">
+                        <h1>Problems list:</h1>
+                            <div class="parsed">
+                                {% for code in all_codes %}
+                                    <a href=" {{ code.id }}"> {{ code.date|date:"d-m-Y" }} - {{ code.title }}  - №{{ code.number }}</a>
+                                    {% if request.user.is_superuser %}
+                                    <a style="color:red; text-indent:15px;" href="delete/{{ code.id }}">
+                                        {% icon 'trash' title='Delete' %}
+                                    </a>
+                                    {% endif %}
+                                    <br>
+                                {% endfor %}
+                            </div>
+
+                        <form method="post" action="{% url 'share:AddExercise' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-success px-5">Add</button>
+                        </form>
+                        <br>
+
+                        {% if all_codes.has_other_pages %}
+                            <ul class="pagination pagination-md">
+                                {% if all_codes.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ all_codes.previous_page_number }}" tabindex="-1">Previous</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                    </li>
+                                {% endif %}
+                                {% for i in all_codes.paginator.page_range %}
+                                    {% if all_codes.number == i %}
+                                        <li class="page-item active">
+                                            <a class="page-link" >{{ i }} <span class="sr-only">(current)</span></a>
+                                        </li>
+                                    {% else %}
+                                         <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if all_codes.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ all_codes.next_page_number }}" tabindex="-1">Next</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Next</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+
+
+                    </div>
+            </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+

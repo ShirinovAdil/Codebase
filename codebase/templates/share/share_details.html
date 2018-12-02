@@ -1,0 +1,40 @@
+{% extends "personal/header.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title> {{ ex.title }} </title>
+{% endblock title %}
+
+
+
+{% block content %}
+{% load staticfiles %}
+
+
+<div class="share_details_body">
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 15px">
+            <div class="col-md-5 content" style="font-size: 1.5em">
+                <div class="source_code_details">
+                    <h1 style="color:red; font-family:italic;">{{ex.title}}</h1><hr>
+
+
+                    {% for code in codes %}
+                        <a href="{{ code.id }}"> {{ code.author }} - {{ code.date|date:"d-m-Y" }}</a>
+                        <br>
+                    {% endfor %}
+
+                    <form method="post" action="{% url 'share:add_new_solution' ex.pk %}">
+                        {% csrf_token %}
+                         <button  class="btn btn-success px-5">Add solution</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

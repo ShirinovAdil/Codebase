@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\Adil\Documents\Programming projects\Python\Django Learning\Cisco2\venv"
+$env:VIRTUAL_ENV="C:\Users\Adil\Documents\Programming projects\Python\Django Learning\CodeBase\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
